@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: 'Run manually'
+        description: 'Let's go manually'
         default: 'Manual Execution'
         required: true
 
