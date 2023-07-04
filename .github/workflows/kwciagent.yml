@@ -37,7 +37,7 @@ jobs:
       - name: kwinject
         run: kwinject make
       - name: create diff list
-        run: git diff --name-only HEAD^..HEAD > diff_file_list.txt
+        run: git diff --name-only > diff_file_list.txt
       - name: kwciagent
         id: kwciagent
         run: |
