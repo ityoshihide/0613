@@ -17,17 +17,17 @@ void buffer_overflow_via_sprintf(char *dest)
 
 
 /* This example shows the mistake in assuming that the user will input
- the expected value - there is no check to make sure only unsigned 8-bit 
+ the expected value - there is no check to make sure only unsigned 8-bit
  values are passed in, and so large numbers can cause a buffer overflow */
-void buffer_overflow_dotted_quad(void) 
+void buffer_overflow_dotted_quad(void)
 {
-	char buf[50];
+	char buf[100];
 	unsigned int a1,a2,a3,a4, bigaddr;
 
 	printf("Enter IP address as xx.xx.xx.xx: ");
 	scanf("%u.%u.%u.%u", &a1, &a2, &a3, &a4);
 
-	bigaddr = (a1<<24) + (a2<<16) + (a3<<8) + a4; 
+	bigaddr = (a1<<24) + (a2<<16) + (a3<<8) + a4;
 
 	sprintf(buf, "%u.%u.%u.%u = %u", a1,a2,a3,a4, bigaddr);
 	printf("Results: %s\n", buf);
@@ -37,7 +37,7 @@ void buffer_overflow_dotted_quad(void)
 void off_by_one_error(void)
 {
 	char *source = "This string is exactly 36 bytes long";
-	char dest[36];
+	char dest[100];
 
 	strcpy(dest, source);
 }
@@ -57,7 +57,7 @@ void buffer_overrun_via_macro_expansion(char *dest)
 
 /* now we actually invoke 'buffer_overrun_via_macro_expansion' and only now we get error */
 void invoke_bad_copy() {
-    char buf[8];
+    char buf[100];
 
     buffer_overrun_via_macro_expansion(buf);
 }
